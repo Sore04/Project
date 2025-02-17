@@ -68,3 +68,9 @@ def updateBook(request, id):
     book.save()
 
     return redirect('/demotemplates/insert/')
+
+def deleteBook(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+
+    return redirect('/demotemplates/insert/')
