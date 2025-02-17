@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert into Database</title>
+</head>
+<body>
+    <h1>Insert</h1>
+
+    <form action="saveBook/" method="POST">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+
+        <button type="submit">Save</button>
+    </form>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for book in books %}
+
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td><a href="editBook/{{ book.id }}/">Edit</a></td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

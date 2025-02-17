@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Item
+from .models import Item, Book
 
 # Create your views here.
 def index(request):
@@ -40,3 +40,23 @@ def delete(request, id):
     item = Item.objects.get(id=id)
     item.delete()
     return redirect('/demotemplates/')
+
+
+
+def insert(request):
+    books = Book.objects.all()
+    return render(request, 'insert.html', {'books': books})
+
+
+def saveBook(request):
+    title = request.POST['title']
+    author = request.POST['author']
+
+    newBook = Book(title=title, author=author)
+    newBook.save()
+
+    return redirect('/demotemplates/insert/')
+
+def editBook(request, id):
+    book = Book.objects.get(id=id)
+    return render(request, 'editBook.html', {'book': book})
