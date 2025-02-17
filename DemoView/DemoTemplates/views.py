@@ -60,3 +60,11 @@ def saveBook(request):
 def editBook(request, id):
     book = Book.objects.get(id=id)
     return render(request, 'editBook.html', {'book': book})
+
+def updateBook(request, id):
+    book = Book.objects.get(id=id)
+    book.title = request.POST['title']
+    book.author = request.POST['author']
+    book.save()
+
+    return redirect('/demotemplates/insert/')

@@ -11,4 +11,5 @@ urlpatterns = [
     path('insert/', views.insert),
     path('insert/saveBook/', views.saveBook),
     path('insert/editBook/<int:id>/', views.editBook),
+    path('insert/editBook/<int:id>/updateBook/', views.updateBook),
 ]
