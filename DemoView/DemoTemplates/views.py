@@ -43,6 +43,11 @@ def delete(request, id):
 
 
 
+
+
+
+
+
 def insert(request):
     books = Book.objects.all()
     return render(request, 'insert.html', {'books': books})
