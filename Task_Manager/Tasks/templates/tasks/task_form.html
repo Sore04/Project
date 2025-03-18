@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">{{ form.instance.id|yesno:"Edit Task,Create Task" }}</h1>
+        <form method="post" class="bg-white p-6 rounded-lg shadow-md">
+            {% csrf_token %}
+            <div class="mb-4">
+                {{ form.title.label_tag }}
+                {{ form.title }}
+            </div>
+            <div class="mb-4">
+                {{ form.description.label_tag }}
+                {{ form.description }}
+            </div>
+            <div class="mb-4">
+                {{ form.due_date.label_tag }}
+                {{ form.due_date }}
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">
+                Save
+            </button>
+        </form>
+    </div>
+</body>
+</html>

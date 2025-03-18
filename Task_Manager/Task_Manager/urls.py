@@ -1,5 +1,5 @@
 """
-URL configuration for DemoView project.
+URL configuration for Task_Manager project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from Tasks import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('demotemplates/', include('DemoTemplates.urls')),
+    path('', views.home, name='home'),
+    path('Tasks/', include('Tasks.urls')),
 ]
